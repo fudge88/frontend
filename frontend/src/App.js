@@ -1,8 +1,14 @@
 import './App.css';
+import Category from './components/Category';
 import Header from './components/Header';
 
 export const App = () => {
-	return <Header />;
+	return (
+		<>
+			<Header />
+			<Category />
+		</>
+	);
 };
 
 export default App;

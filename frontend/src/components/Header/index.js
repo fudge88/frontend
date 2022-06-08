@@ -26,7 +26,7 @@ const Header = () => {
 				<Box
 					className="headerText"
 					sx={{
-						justifyContent: isMobile ? 'center' : 'left',
+						justifyContent: 'center',
 						alignItems: isMobile ? 'center' : 'left',
 					}}>
 					<Typography
@@ -40,10 +40,12 @@ const Header = () => {
 						my summer. my shoes.
 					</Typography>
 					<Typography
-						variant="h5"
+						variant={isMobile ? 'h6' : 'h5'}
 						sx={{
 							pt: isTablet ? 0 : 1,
 							textAlign: isMobile ? 'center' : 'left',
+							textTransform: 'uppercase',
+							letterSpacing: '1px',
 						}}>
 						Let your shoes do the talking
 					</Typography>
@@ -51,6 +53,7 @@ const Header = () => {
 						sx={{
 							mt: 2,
 							color: 'black',
+							cursor: 'pointer',
 						}}
 						size="medium"
 						variant="outlined">
