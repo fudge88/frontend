@@ -20,7 +20,7 @@ const Header = () => {
 				spacing={{ xs: 1, sm: 2, md: 4 }}>
 				<Box
 					component="img"
-					sx={{ maxWidth: { xs: 400, md: 600 }, margin: 'auto' }}
+					sx={{ maxWidth: { xs: 300, md: 600 }, margin: 'auto' }}
 					src="https://img.freepik.com/free-photo/fashionable-woman-s-high-heel-shoe-isolated-white-background-beautiful-yellow-female-high-heels-shoe-luxury-rear-view_186202-4496.jpg?w=826&t=st=1654680377~exp=1654680977~hmac=bc9ce7d08b8078e484a4f65fd070c93de50ead17bc9fb471d5ae3a0a25804d21"
 				/>
 				<Box
@@ -50,11 +50,13 @@ const Header = () => {
 						Let your shoes do the talking
 					</Typography>
 					<Button
+						className="buttonHover"
 						sx={{
 							mt: 2,
 							color: 'white',
 							backgroundColor: 'black',
 							cursor: 'pointer',
+							'&:hover': { backgroundColor: '#5fcbcf', color: 'black' },
 						}}
 						size="medium"
 						variant="contained">

@@ -38,7 +38,13 @@ const Featured = () => {
 					justifyContent: 'center',
 				}}>
 				{randomized.slice(3).map((product) => (
-					<Card sx={{ minWidth: 140, boxShadow: 'none', m: '2px' }}>
+					<Card
+						sx={{
+							minWidth: 140,
+							minHeight: 140,
+							boxShadow: 'none',
+							m: '2px',
+						}}>
 						<CardMedia
 							component="img"
 							height="140"
