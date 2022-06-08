@@ -4,9 +4,13 @@ import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 
+import { TABLET } from '../../media';
+import { useMediaQuery } from 'react-responsive';
+
 import './Header.css';
 
 const Header = () => {
+	const isTablet = useMediaQuery(TABLET);
 	return (
 		<Container>
 			<Stack
@@ -20,13 +24,19 @@ const Header = () => {
 				/>
 				<Box className="headerText">
 					<Typography
-						sx={{ textTransform: 'uppercase', fontWeight: 'bold' }}
+						sx={{
+							textTransform: 'uppercase',
+							fontWeight: 'bold',
+							p: isTablet ? 0 : 1,
+						}}
 						variant="h3">
 						my summer. my shoes.
 					</Typography>
-					<Typography variant="h5">Let your shoes do the talking</Typography>
+					<Typography variant="h5" sx={{ p: isTablet ? 0 : 1 }}>
+						Let your shoes do the talking
+					</Typography>
 					<Button
-						sx={{ marginTop: '20px', color: 'black' }}
+						sx={{ m: isTablet ? 0 : 1, mt: isTablet ? 2 : 0, color: 'black' }}
 						size="medium"
 						variant="outlined">
 						Shop Now
