@@ -31,7 +31,7 @@ export const products = [
 	},
 	{
 		id: 3,
-		img: 'https://cdn.media.amplience.net/i/office/4257585002_sd1.jpg?$newhighres$&w=400&h=355&fmt=auto&qlt=default&fmt.jpeg.interlaced=true',
+		img: 'https://cdn.media.amplience.net/i/office/4552475004_sd1.jpg?$newhighres$&w=400&h=355&fmt=auto&qlt=default&fmt.jpeg.interlaced=true',
 		title: 'meme block heels',
 		price: '49.99',
 	},

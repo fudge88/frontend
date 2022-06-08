@@ -6,8 +6,19 @@ import Container from '@mui/material/Container';
 
 import './Featured.css';
 import { products } from '../../data';
+import { DESKTOP, LARGE, XSMOBILE } from '../../media';
+import { useMediaQuery } from 'react-responsive';
 
 const Featured = () => {
+	const isLarge = useMediaQuery(LARGE);
+	const isDesktop = useMediaQuery(DESKTOP);
+	const isXsMobile = useMediaQuery(XSMOBILE);
+
+	const randomized = products.sort(() => {
+		const randomTrueOrFalse = Math.random() > 0.5;
+		return randomTrueOrFalse ? 1 : -1;
+	});
+
 	return (
 		<Container sx={{ textAlign: 'center', mt: 7 }}>
 			<Typography
@@ -26,7 +37,7 @@ const Featured = () => {
 					flexDirection: 'row',
 					justifyContent: 'center',
 				}}>
-				{products.map((product) => (
+				{randomized.slice(3).map((product) => (
 					<Card sx={{ minWidth: 140, boxShadow: 'none', m: '2px' }}>
 						<CardMedia
 							component="img"
