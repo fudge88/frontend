@@ -33,6 +33,7 @@ const Category = () => {
 							component="img"
 							height="300"
 							image={category.img}
+							key={category.id}
 							alt={category.title}
 						/>
 						<Box

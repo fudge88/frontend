@@ -52,11 +52,12 @@ const Header = () => {
 					<Button
 						sx={{
 							mt: 2,
-							color: 'black',
+							color: 'white',
+							backgroundColor: 'black',
 							cursor: 'pointer',
 						}}
 						size="medium"
-						variant="outlined">
+						variant="contained">
 						Shop Now
 					</Button>
 				</Box>
