@@ -31,7 +31,7 @@ const Nav = () => {
 						</Typography>
 						<Tabs textColor="white" sx={{ marginLeft: 'auto' }}>
 							{categories.map((category, index) => (
-								<Tab key={index} label={category} />
+								<Tab value={index} key={index} label={category} />
 							))}
 						</Tabs>
 					</>

@@ -11,7 +11,7 @@ const OfferBanner = () => {
 					padding: '2px',
 				}}
 				variant="body2">
-				golden shoe members get £10 voucher to spend in store!
+				golden shoe members get £10 off in store!
 			</Typography>
 		</div>
 	);

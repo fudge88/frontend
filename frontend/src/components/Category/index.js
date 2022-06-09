@@ -22,6 +22,7 @@ const Category = () => {
 			}}>
 			{categories.map((category) => (
 				<Box
+					key={category.id}
 					className={isXsMobile ? 'categoryText' : ' '}
 					sx={{
 						m: isXsMobile ? 'auto' : 1,
@@ -33,7 +34,6 @@ const Category = () => {
 							component="img"
 							height="300"
 							image={category.img}
-							key={category.id}
 							alt={category.title}
 						/>
 						<Box

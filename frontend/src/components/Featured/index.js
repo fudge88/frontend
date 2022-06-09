@@ -5,7 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Container from '@mui/material/Container';
 
 import { products } from '../../data';
-import { LARGE, DESKTOP, MOBILE, XSMOBILE, TABLET } from '../../media';
+import { DESKTOP, MOBILE, XSMOBILE, TABLET } from '../../media';
 import { useMediaQuery } from 'react-responsive';
 
 const Featured = () => {
@@ -13,7 +13,6 @@ const Featured = () => {
 	const isMobile = useMediaQuery(MOBILE);
 	const isTablet = useMediaQuery(TABLET);
 	const isDesktop = useMediaQuery(DESKTOP);
-	const isLarge = useMediaQuery(LARGE);
 
 	// screen size for slice figure
 	const getScreenSize = () => {
