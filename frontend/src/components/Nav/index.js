@@ -6,7 +6,6 @@ import ShoppingBasketOutlinedIcon from '@mui/icons-material/ShoppingBasketOutlin
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 
-import './Nav.css';
 import NavDropdown from '../NavDropdown';
 import { MOBILE } from '../../media';
 import { useMediaQuery } from 'react-responsive';

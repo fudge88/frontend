@@ -27,13 +27,13 @@ const Footer = () => {
 	const isTablet = useMediaQuery(TABLET);
 	return (
 		<>
-			<Container sx={{ borderTop: 'solid 1px black' }}>
+			<Container sx={{ borderTop: 'solid 1px black', marginTop: '20px' }}>
 				<Box
 					sx={{
 						display: 'flex',
 						justifyContent: isTablet ? 'center' : 'space-between',
 						flexWrap: 'wrap',
-						padding: '40px 20px',
+						padding: '30px 20px',
 					}}>
 					<Box
 						sx={{
