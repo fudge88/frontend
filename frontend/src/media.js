@@ -1,9 +1,9 @@
-export const XSMOBILE = { query: '(max-width: 599px)' };
+export const XSMOBILE = { query: '(max-width: 450px)' };
 
-export const MOBILE = { query: '(max-width: 650px)' };
+export const MOBILE = { query: '(max-width: 600px)' };
 
-export const DESKTOP = { query: '(min-width: 651px)' };
+export const TABLET = { query: '(max-width: 760px)' };
 
-export const TABLET = { query: '(max-width: 865px)' };
+export const DESKTOP = { query: '(max-width: 960px)' };
 
-export const LARGE = { query: '(min-width: 900px, max-width: 1199px)' };
+export const LARGE = { query: '(max-width: 1920px)' };

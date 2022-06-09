@@ -6,26 +6,42 @@ import Container from '@mui/material/Container';
 
 import './Featured.css';
 import { products } from '../../data';
-import { DESKTOP, LARGE, XSMOBILE } from '../../media';
+import { LARGE, DESKTOP, MOBILE, XSMOBILE, TABLET } from '../../media';
 import { useMediaQuery } from 'react-responsive';
 
 const Featured = () => {
-	const isLarge = useMediaQuery(LARGE);
-	const isDesktop = useMediaQuery(DESKTOP);
 	const isXsMobile = useMediaQuery(XSMOBILE);
+	const isMobile = useMediaQuery(MOBILE);
+	const isTablet = useMediaQuery(TABLET);
+	const isDesktop = useMediaQuery(DESKTOP);
+	const isLarge = useMediaQuery(LARGE);
 
+	// screen size for slice figure
+	const getScreenSize = () => {
+		if (isXsMobile) return 6;
+		if (isMobile) return 4;
+		if (isTablet) return 3;
+		if (isDesktop) return 2;
+	};
+
+	// shuffle products to display
 	const randomized = products.sort(() => {
 		const randomTrueOrFalse = Math.random() > 0.5;
 		return randomTrueOrFalse ? 1 : -1;
 	});
 
 	return (
-		<Container sx={{ textAlign: 'center', mt: 7 }}>
+		<Container
+			sx={{
+				textAlign: 'center',
+				mt: 5,
+				display: isXsMobile ? 'none' : 'block',
+			}}>
 			<Typography
 				variant="h5"
 				sx={{
-					pt: 7,
-					pb: 5,
+					pt: 5,
+					pb: 3,
 					borderTop: 'solid 1px grey',
 					textTransform: 'capitalize',
 				}}>
@@ -37,19 +53,20 @@ const Featured = () => {
 					flexDirection: 'row',
 					justifyContent: 'center',
 				}}>
-				{randomized.slice(3).map((product) => (
+				{randomized.slice(getScreenSize()).map((product) => (
 					<Card
+						key={product.id}
 						sx={{
-							minWidth: 140,
-							minHeight: 140,
+							minWidth: { sm: 120, md: 140 },
+							minHeight: { sm: 120, md: 140 },
 							boxShadow: 'none',
 							m: '2px',
 						}}>
 						<CardMedia
 							component="img"
-							height="140"
+							height={isXsMobile ? '120' : '140'}
+							width={isXsMobile ? '120' : '140'}
 							image={product.img}
-							key={product.id}
 							alt="name"
 						/>
 						<CardContent>

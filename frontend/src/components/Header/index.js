@@ -50,7 +50,6 @@ const Header = () => {
 						Let your shoes do the talking
 					</Typography>
 					<Button
-						className="buttonHover"
 						sx={{
 							mt: 2,
 							color: 'white',
