@@ -4,7 +4,6 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Container from '@mui/material/Container';
 
-import './Featured.css';
 import { products } from '../../data';
 import { LARGE, DESKTOP, MOBILE, XSMOBILE, TABLET } from '../../media';
 import { useMediaQuery } from 'react-responsive';

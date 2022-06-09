@@ -1,135 +1,50 @@
 import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
 import ShoppingBasketOutlinedIcon from '@mui/icons-material/ShoppingBasketOutlined';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
 
 import './Nav.css';
-import React from 'react';
-import { width } from '@mui/system';
-const pages = ['Products', 'Pricing', 'Blog'];
+import NavDropdown from '../NavDropdown';
+import { MOBILE } from '../../media';
+import { useMediaQuery } from 'react-responsive';
+const categories = ['men', 'women', 'kids'];
 
 const Nav = () => {
-	const [anchorElNav, setAnchorElNav] = React.useState(null);
-	const [anchorElUser, setAnchorElUser] = React.useState(null);
-
-	const handleOpenNavMenu = (event) => {
-		setAnchorElNav(event.currentTarget);
-	};
-	const handleOpenUserMenu = (event) => {
-		setAnchorElUser(event.currentTarget);
-	};
-
-	const handleCloseNavMenu = () => {
-		setAnchorElNav(null);
-	};
-
-	const handleCloseUserMenu = () => {
-		setAnchorElUser(null);
-	};
+	const isMobile = useMediaQuery(MOBILE);
 	return (
 		<AppBar
 			position="static"
 			sx={{ boxShadow: 'none', backgroundColor: 'black' }}>
-			<Container>
-				<Toolbar disableGutters>
-					<Typography
-						variant="h6"
-						noWrap
-						component="a"
-						href="/"
-						sx={{
-							mr: 2,
-							display: { xs: 'none', md: 'flex' },
-							fontWeight: 'bold',
-							color: 'inherit',
-							textTransform: 'uppercase',
-							textDecoration: 'none',
-						}}>
-						Golden Shoe
-					</Typography>
-
-					<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-						<IconButton
-							sx={{ '&:hover': { color: '#5fcbcf' } }}
-							size="large"
-							aria-label="account of current user"
-							aria-controls="menu-appbar"
-							aria-haspopup="true"
-							onClick={handleOpenNavMenu}
-							color="inherit">
-							<MenuIcon />
-						</IconButton>
-						<Menu
-							id="menu-appbar"
-							anchorEl={anchorElNav}
-							anchorOrigin={{
-								vertical: 'bottom',
-								horizontal: 'left',
-							}}
-							keepMounted
-							transformOrigin={{
-								vertical: 'top',
-								horizontal: 'left',
-							}}
-							open={Boolean(anchorElNav)}
-							onClose={handleCloseNavMenu}
-							sx={{
-								display: { xs: 'block', md: 'none' },
-							}}>
-							{pages.map((page) => (
-								<MenuItem key={page} onClick={handleCloseNavMenu}>
-									<Typography textAlign="center">{page}</Typography>
-								</MenuItem>
+			<Toolbar>
+				{isMobile ? (
+					<>
+						<NavDropdown />
+						<Typography variant="button">Golden Shoe</Typography>
+					</>
+				) : (
+					<>
+						<Typography sx={{ textTransform: 'uppercase' }} variant="h6">
+							Golden Shoe
+						</Typography>
+						<Tabs textColor="white" sx={{ marginLeft: 'auto' }}>
+							{categories.map((category, index) => (
+								<Tab key={index} label={category} />
 							))}
-						</Menu>
-					</Box>
-					<Typography
-						variant="h6"
-						noWrap
-						component="a"
-						href=""
-						sx={{
-							mr: 2,
-							display: { xs: 'flex', md: 'none' },
-							flexGrow: 1,
-							fontWeight: 'bold',
-							letterSpacing: '1px',
-							color: 'inherit',
-							textTransform: 'uppercase',
-							textDecoration: 'none',
-						}}>
-						Golden Shoe
-					</Typography>
-					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-						{pages.map((page) => (
-							<Button
-								key={page}
-								onClick={handleCloseNavMenu}
-								sx={{ my: 2, color: 'white', display: 'block' }}>
-								{page}
-							</Button>
-						))}
-					</Box>
-
-					<Box sx={{ flexGrow: 0 }}>
-						<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-							<ShoppingBasketOutlinedIcon
-								sx={{
-									color: 'white',
-									'&:hover': { color: '#5fcbcf' },
-								}}
-							/>
-						</IconButton>
-					</Box>
-				</Toolbar>
-			</Container>
+						</Tabs>
+					</>
+				)}
+				<Button
+					sx={{
+						ml: 'auto',
+						color: 'white',
+						'&:hover': { color: '#5fcbcf' },
+					}}>
+					<ShoppingBasketOutlinedIcon />
+				</Button>
+			</Toolbar>
 		</AppBar>
 	);
 };

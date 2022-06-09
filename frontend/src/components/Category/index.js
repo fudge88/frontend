@@ -15,7 +15,7 @@ const Category = () => {
 	return (
 		<Box
 			sx={{
-				mt: 2,
+				mt: isXsMobile ? 5 : 2,
 				display: 'flex',
 				justifyContent: 'center',
 				flexDirection: isXsMobile ? 'column' : 'row',
