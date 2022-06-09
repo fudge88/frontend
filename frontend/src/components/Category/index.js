@@ -60,6 +60,7 @@ const Category = () => {
 									color: 'white',
 									backgroundColor: 'black',
 									cursor: 'pointer',
+									'&:hover': { backgroundColor: '#5fcbcf', color: 'black' },
 								}}
 								size="medium"
 								variant="contained">
