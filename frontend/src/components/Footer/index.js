@@ -14,6 +14,7 @@ import {
 
 import { TABLET } from '../../media';
 import { useMediaQuery } from 'react-responsive';
+import Signup from '../Signup';
 
 const Item = styled(Paper)(({ theme }) => ({
 	backgroundColor: 'transparent',
@@ -28,31 +29,15 @@ const Footer = () => {
 	return (
 		<>
 			<Container sx={{ borderTop: 'solid 1px black', marginTop: '20px' }}>
+				<Signup />
 				<Box
 					sx={{
 						display: 'flex',
 						justifyContent: isTablet ? 'center' : 'space-between',
+						alignItems: 'center',
 						flexWrap: 'wrap',
-						padding: '30px 20px',
+						padding: '20px 30px 10px 30px',
 					}}>
-					<Box
-						sx={{
-							display: 'flex',
-							flexDirection: 'column',
-							textAlign: isTablet ? 'center' : 'left',
-							padding: '20px 10px',
-						}}>
-						<Typography
-							variant="h5"
-							sx={{
-								display: 'inline-block',
-							}}>
-							Comfort for your feet
-						</Typography>
-						<Typography variant="body2">
-							Become a member today and get the latest offers!
-						</Typography>
-					</Box>
 					<Stack
 						direction="row"
 						divider={<Divider orientation="vertical" flexItem />}
@@ -61,6 +46,24 @@ const Footer = () => {
 						<Item>Delivery Info</Item>
 						<Item>Returns Policy</Item>
 					</Stack>
+					<Box
+						sx={{
+							display: 'flex',
+							flexDirection: 'column',
+							textAlign: isTablet ? 'center' : 'left',
+							padding: '10px',
+						}}>
+						<Box
+							component="img"
+							sx={{
+								maxWidth: { xs: 300, md: 600 },
+								display: 'flex',
+								margin: 'auto',
+								padding: '10px',
+							}}
+							src="https://i.ibb.co/Qfvn4z6/payment.png"
+						/>
+					</Box>
 				</Box>
 			</Container>
 			<Container
