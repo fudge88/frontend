@@ -1,11 +1,11 @@
 import Filter from '../components/Filter';
-import Product from '../components/Product';
+import Products from '../components/Products';
 
 const ProductList = () => {
 	return (
 		<>
 			<Filter />
-			<Product />
+			<Products />
 		</>
 	);
 };

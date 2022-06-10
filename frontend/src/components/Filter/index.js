@@ -49,8 +49,8 @@ const Filter = () => {
 							value={sort}
 							label="Sort by"
 							onChange={handleSortChange}>
-							<MenuItem value={'lowToHigh'}>Price (low - high)</MenuItem>
-							<MenuItem value={'highToLow'}>Price (high - Low)</MenuItem>
+							<MenuItem value={'lowToHigh'}>Price (asc)</MenuItem>
+							<MenuItem value={'highToLow'}>Price (des)</MenuItem>
 							<MenuItem value={'new'}>Newest first</MenuItem>
 						</Select>
 					</FormControl>
