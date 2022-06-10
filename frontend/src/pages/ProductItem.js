@@ -1,9 +1,13 @@
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
+import Featured from '../components/Featured';
 import Product from '../components/Product';
 
 const ProductItem = () => {
-	return <Product />;
+	return (
+		<>
+			<Product />
+			<Featured />
+		</>
+	);
 };
 
 export default ProductItem;

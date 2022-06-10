@@ -5,7 +5,6 @@ import Button from '@mui/material/Button';
 
 import { TABLET } from '../../media';
 import { useMediaQuery } from 'react-responsive';
-import { textAlign } from '@mui/system';
 
 const size = ['3', '4', '5', '6', '7', '8'];
 const colourList = [

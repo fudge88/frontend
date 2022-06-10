@@ -4,6 +4,7 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
+import SendIcon from '@mui/icons-material/Send';
 
 import { TABLET } from '../../media';
 import { useMediaQuery } from 'react-responsive';
@@ -65,7 +66,7 @@ const Signup = () => {
 						},
 					}}
 					variant="contained">
-					Sign up!
+					{isTablet ? <SendIcon /> : 'Sign Up!'}
 				</Button>
 			</Box>
 

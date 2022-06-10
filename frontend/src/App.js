@@ -5,13 +5,13 @@ import OfferBanner from './components/OfferBanner';
 import ProductItem from './pages/ProductItem';
 import Home from './pages/Home';
 import ProductList from './pages/ProductList';
+import Basket from './pages/Basket';
 
 export const App = () => {
 	return (
 		<>
 			<Nav />
-			<OfferBanner />
-			<ProductItem />
+			<Basket />
 			<Footer />
 		</>
 	);
