@@ -14,11 +14,12 @@ const Product = () => {
 	const isMobile = useMediaQuery(MOBILE);
 	return (
 		<Container
+			maxWidth={false}
 			sx={{
 				display: 'flex',
 				flexDirection: 'row',
 				flexWrap: 'wrap',
-				justifyContent: 'center',
+				justifyContent: 'space-evenly',
 			}}>
 			{products.map((product) => (
 				<Card

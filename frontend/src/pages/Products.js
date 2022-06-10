@@ -1,11 +1,13 @@
+import Filter from '../components/Filter';
 import Product from '../components/Product';
 
-const Products = () => {
+const ProductList = () => {
 	return (
 		<>
+			<Filter />
 			<Product />
 		</>
 	);
 };
 
-export default Products;
+export default ProductList;
