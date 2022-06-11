@@ -13,103 +13,114 @@ const BasketList = () => {
 	const isTablet = useMediaQuery(TABLET);
 	const isXsMobile = useMediaQuery(XSMOBILE);
 	return (
-		<Container sx={{ padding: isXsMobile ? '0px' : '20px' }}>
-			<Typography variant="h4">My Bag</Typography>
-			<Typography mb={2} variant="h6">
-				Items (4)
-			</Typography>
+		<>
+			<Box sx={{ padding: isXsMobile ? '20px 10px' : '20px' }}>
+				<Typography variant="h4">My Bag</Typography>
+				<Typography variant="h6">Items (4)</Typography>
+			</Box>
 			<Box
 				sx={{
+					padding: isXsMobile ? '0px' : '20px',
 					display: 'flex',
 					flexDirection: 'row',
-					justifyContent: isXsMobile ? 'center' : 'space-between',
 					flexWrap: 'wrap-reverse',
-					textAlign: 'left',
 				}}>
+				{/* basket list */}
 				<Box
-					m={isXsMobile ? 0 : 3}
 					sx={{
 						display: 'flex',
-						flexDirection: 'row',
-						flexWrap: 'wrap',
-						alignItems: 'center',
-						justifyContent: 'space-between',
-						borderTop: 'solid 1px black',
-						padding: '20px 0px',
+						flexDirection: 'column',
+						flexWrap: 'nowrap',
 						flexGrow: '1',
 					}}>
 					<Box
-						component="img"
-						sx={{
-							maxWidth: 150,
-							// marginRight: 'auto',
-						}}
-						src="https://img.freepik.com/free-photo/fashionable-woman-s-high-heel-shoe-isolated-white-background-beautiful-yellow-female-high-heels-shoe-luxury-rear-view_186202-4496.jpg?w=826&t=st=1654680377~exp=1654680977~hmac=bc9ce7d08b8078e484a4f65fd070c93de50ead17bc9fb471d5ae3a0a25804d21"
-					/>
-					<Box
+						// m={isTablet ? 0 : 2}
 						sx={{
 							display: 'flex',
-							flexDirection: 'column',
-							flexWrap: 'wrap',
-							textAlign: 'right',
-							textTransform: 'capitalize',
+							flexDirection: 'row',
+							alignItems: 'center',
+							justifyContent: 'space-between',
+							borderTop: 'solid 1px black',
+							padding: '20px 0px',
+							flexGrow: '1',
+							margin: isTablet ? '20px 10px' : '20px',
 						}}>
-						<Typography variant="button">skinny strap heels</Typography>
-						<Typography variant="body2">colour</Typography>
-						<Typography variant="body2">size</Typography>
-						<Typography variant="body2">price</Typography>
+						<Box
+							component="img"
+							sx={{
+								maxWidth: 150,
+								// marginRight: 'auto',
+							}}
+							src="https://img.freepik.com/free-photo/fashionable-woman-s-high-heel-shoe-isolated-white-background-beautiful-yellow-female-high-heels-shoe-luxury-rear-view_186202-4496.jpg?w=826&t=st=1654680377~exp=1654680977~hmac=bc9ce7d08b8078e484a4f65fd070c93de50ead17bc9fb471d5ae3a0a25804d21"
+						/>
 						<Box
 							sx={{
 								display: 'flex',
-								flexDirection: 'row',
-								justifyContent: 'normal',
-								height: '40px',
-								margin: '10px 0px',
+								flexDirection: 'column',
+								textAlign: 'right',
+								textTransform: 'capitalize',
 							}}>
-							<Button
-								variant="outlined"
+							<Typography variant="button">skinny strap heels</Typography>
+							<Typography variant="body2">colour</Typography>
+							<Typography variant="body2">size</Typography>
+							<Typography variant="body2">price</Typography>
+							<Box
 								sx={{
-									minWidth: '40px',
-									maxHeight: '40px',
-									backgroundColor: 'black',
-									color: 'white',
-									fontSize: '20px',
-									boxShadow: 'none',
-									'&:hover': { backgroundColor: '#5fcbcf', color: 'black' },
+									display: 'flex',
+									flexDirection: 'row',
+									justifyContent: 'normal',
+									height: '40px',
+									margin: '10px 0px',
 								}}>
-								-
-							</Button>
-							<OutlinedInput
-								sx={{
-									maxWidth: '60px',
-									maxHeight: '40px',
-									margin: 'auto',
-									paddingLeft: '10px',
-								}}
-								placeholder="4"
-							/>
-							<Button
-								variant="contained"
-								sx={{
-									minWidth: '40px',
-									backgroundColor: 'black',
-									color: 'white',
-									fontSize: '15px',
-									boxShadow: 'none',
-									'&:hover': { backgroundColor: '#5fcbcf', color: 'black' },
-								}}>
-								+
-							</Button>
+								<Button
+									variant="outlined"
+									sx={{
+										minWidth: '40px',
+										maxHeight: '40px',
+										backgroundColor: 'black',
+										color: 'white',
+										fontSize: '20px',
+										boxShadow: 'none',
+										'&:hover': { backgroundColor: '#5fcbcf', color: 'black' },
+									}}>
+									-
+								</Button>
+								<OutlinedInput
+									sx={{
+										maxWidth: '60px',
+										maxHeight: '40px',
+										margin: 'auto',
+										paddingLeft: '10px',
+									}}
+									placeholder="4"
+								/>
+								<Button
+									variant="contained"
+									sx={{
+										minWidth: '40px',
+										backgroundColor: 'black',
+										color: 'white',
+										fontSize: '15px',
+										boxShadow: 'none',
+										'&:hover': { backgroundColor: '#5fcbcf', color: 'black' },
+									}}>
+									+
+								</Button>
+							</Box>
+							<Typography variant="caption">remove item</Typography>
 						</Box>
-						<Typography variant="caption">remove item</Typography>
 					</Box>
 				</Box>
+				{/* order summary */}
 				<Box
 					sx={{
+						display: 'flex',
+						flexDirection: 'column',
+						flexWrap: 'nowrap',
 						border: '1px solid #5fcbcf',
 						borderRadius: '5px',
 						padding: '10px',
-						margin: isXsMobile ? '20px 0px' : '20px 0px 0px 20px',
+						margin: isTablet ? 'auto' : '20px 0px 0px 20px',
 						minWidth: isTablet ? '90%' : '30%',
 					}}>
 					<Typography variant="h5" pb={2}>
@@ -124,6 +135,7 @@ const BasketList = () => {
 					<Typography mb={2} variant="subtitle1">
 						<b>Total</b>
 					</Typography>
+					{/* buttons */}
 					<Box
 						sx={{
 							display: 'flex',
@@ -157,7 +169,7 @@ const BasketList = () => {
 					</Box>
 				</Box>
 			</Box>
-		</Container>
+		</>
 	);
 };
 
