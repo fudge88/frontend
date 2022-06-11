@@ -5,11 +5,22 @@ import Button from '@mui/material/Button';
 import ShoppingBasketOutlinedIcon from '@mui/icons-material/ShoppingBasketOutlined';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import Badge from '@mui/material/Badge';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import NavDropdown from '../NavDropdown';
 import { MOBILE } from '../../media';
 import { useMediaQuery } from 'react-responsive';
 const categories = ['men', 'women', 'kids'];
+
+const theme = createTheme({
+	palette: {
+		brand: {
+			main: '#5fcbcf',
+			contrastText: 'black',
+		},
+	},
+});
 
 const Nav = () => {
 	const isMobile = useMediaQuery(MOBILE);
@@ -41,7 +52,11 @@ const Nav = () => {
 						color: 'white',
 						'&:hover': { color: '#5fcbcf' },
 					}}>
-					<ShoppingBasketOutlinedIcon />
+					<ThemeProvider theme={theme}>
+						<Badge badgeContent={4} color="brand">
+							<ShoppingBasketOutlinedIcon />
+						</Badge>
+					</ThemeProvider>
 				</Button>
 			</Toolbar>
 		</AppBar>
