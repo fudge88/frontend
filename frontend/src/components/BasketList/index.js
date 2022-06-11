@@ -33,7 +33,7 @@ const BasketList = () => {
 						flexDirection: 'row',
 						flexWrap: 'wrap',
 						alignItems: 'center',
-						justifyContent: isTablet ? 'center' : 'space-between',
+						justifyContent: 'space-between',
 						borderTop: 'solid 1px black',
 						padding: '20px 0px',
 						flexGrow: '1',
