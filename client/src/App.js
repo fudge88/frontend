@@ -15,7 +15,7 @@ export const App = () => {
 			<OfferBanner />
 			<Routes>
 				<Route path="/" element={<Home />} />
-				<Route path="/products" element={<ProductList />} />
+				<Route path="/products/" element={<ProductList />} />
 				<Route path="/product/:id" element={<ProductItem />} />
 				<Route path="/basket" element={<Basket />} />
 			</Routes>

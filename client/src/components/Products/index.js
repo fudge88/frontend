@@ -5,13 +5,23 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import SquareIcon from '@mui/icons-material/Square';
+import axios from 'axios';
 
-import { products } from '../../data';
+// import { products } from '../../data';
 import { MOBILE } from '../../media';
 import { useMediaQuery } from 'react-responsive';
+import { useEffect, useState } from 'react';
 
-const Product = () => {
+const Product = ({ filter, sort }) => {
 	const isMobile = useMediaQuery(MOBILE);
+
+	const [products, setProducts] = useState([]);
+	const [filteredProducts, setFilteredProducts] = useState([]);
+
+	useEffect(async () => {
+		const res = await axios.get('http://localhost:5001/api/products');
+		console.log(res);
+	}, []);
 	return (
 		<Container
 			maxWidth={false}
