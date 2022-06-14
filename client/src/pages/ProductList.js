@@ -30,7 +30,7 @@ const MenuProps = {
 
 const ProductList = () => {
 	const { products, setProducts, category } = useProductContext();
-	console.log(products);
+
 	const isMobile = useMediaQuery(MOBILE);
 
 	const [sort, setSort] = useState('');

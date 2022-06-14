@@ -35,7 +35,7 @@ const Product = ({ sort, products, setProducts }) => {
 			}}>
 			{products.map((product) => (
 				<Card
-					key={product.id}
+					key={product._id}
 					onClick={() => navigate(`/product/${product._id}`)}
 					sx={{
 						minWidth: { sm: 150, md: 200 },

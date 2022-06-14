@@ -2,7 +2,6 @@ import Box from '@mui/material/Box';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
 import { useProductContext } from '../../context/ProductProvider';
 
 import { XSMOBILE } from '../../media';
@@ -10,12 +9,14 @@ import { useMediaQuery } from 'react-responsive';
 import { categories } from '../../data';
 import { useNavigate } from 'react-router-dom';
 
-import './Category.css';
+import '../../App.css';
 
 const Category = () => {
-	const { products, filteredProduct } = useProductContext();
-	const navigate = useNavigate();
 	const isXsMobile = useMediaQuery(XSMOBILE);
+
+	const { products, filteredProduct } = useProductContext();
+
+	const navigate = useNavigate();
 	return (
 		<Box
 			sx={{
@@ -33,7 +34,7 @@ const Category = () => {
 						maxWidth: 345,
 						position: 'relative',
 					}}>
-					<CardActionArea sx={{ mb: 2 }}>
+					<Box sx={{ mb: 2 }}>
 						<CardMedia
 							component="img"
 							height="300"
@@ -75,7 +76,7 @@ const Category = () => {
 								Shop
 							</Button>
 						</Box>
-					</CardActionArea>
+					</Box>
 				</Box>
 			))}
 		</Box>

@@ -3,6 +3,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Container from '@mui/material/Container';
+import { useNavigate } from 'react-router-dom';
 
 import { products } from '../../data';
 import { DESKTOP, MOBILE, XSMOBILE, TABLET } from '../../media';
@@ -13,6 +14,8 @@ const Featured = () => {
 	const isMobile = useMediaQuery(MOBILE);
 	const isTablet = useMediaQuery(TABLET);
 	const isDesktop = useMediaQuery(DESKTOP);
+
+	const navigate = useNavigate();
 
 	// screen size for slice figure
 	const getScreenSize = () => {

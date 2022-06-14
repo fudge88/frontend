@@ -29,7 +29,6 @@ const Product = () => {
 		// add to basket
 		console.log('add to basket');
 	};
-	console.log(colour, size);
 
 	const isTablet = useMediaQuery(TABLET);
 	return (
@@ -78,10 +77,10 @@ const Product = () => {
 							flexDirection: 'row',
 							justifyContent: isTablet ? 'center' : 'left',
 						}}>
-						{product.colour?.map((c) => (
+						{product.colour?.map((c, index) => (
 							<Button
 								onClick={() => setColour(c)}
-								key={cancelAnimationFrame}
+								key={index}
 								sx={{
 									backgroundColor: `${c}`,
 									padding: '0px',
@@ -100,10 +99,10 @@ const Product = () => {
 							flexDirection: 'row',
 							justifyContent: isTablet ? 'center' : 'left',
 						}}>
-						{product.size?.map((n) => (
+						{product.size?.map((n, index) => (
 							<Button
 								onClick={() => setSize(n)}
-								key={n}
+								key={index}
 								variant="outlined"
 								sx={{
 									color: 'black',
@@ -134,13 +133,8 @@ const Product = () => {
 				</Box>
 			</Box>
 			<Box sx={{ padding: '20px' }}>
-				<Typography variant="h5">{product.detail}</Typography>
-				<Typography variant="body2">
-					Channel a retro athletic aesthetic in sports-casual sneaker Court Lite
-					Tor. Innovative, super-lightweight cushioning complements a
-					perforated, unlined off-white suede and nubuck upper, for a
-					heritage-inspired look and comfortable feel all season long.
-				</Typography>
+				<Typography variant="h5">Product Description</Typography>
+				<Typography variant="body2">{product.desc}</Typography>
 			</Box>
 		</Container>
 	);

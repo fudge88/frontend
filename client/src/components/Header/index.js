@@ -9,7 +9,7 @@ import { TABLET, MOBILE } from '../../media';
 import { useMediaQuery } from 'react-responsive';
 import { useNavigate } from 'react-router-dom';
 
-import './Header.css';
+import '../../App.css';
 
 const Header = () => {
 	const { filteredProduct } = useProductContext();
