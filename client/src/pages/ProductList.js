@@ -27,14 +27,14 @@ const MenuProps = {
 
 const ProductList = () => {
 	const [sort, setSort] = useState('');
-	const [filter, setFilter] = useState('');
+	const [filters, setFilters] = useState({});
 
 	const handleSortChange = (event) => {
 		setSort(event.target.value);
 	};
 
 	const handleFilterChange = (event) => {
-		setFilter(event.target.value);
+		setFilters(event.target.value);
 	};
 
 	return (
@@ -66,10 +66,9 @@ const ProductList = () => {
 								id="sort"
 								value={sort}
 								label="Sort by"
-								onChange={handleSortChange}>
+								onChange={(setSort, handleSortChange)}>
 								<MenuItem value="asc">Price (asc)</MenuItem>
 								<MenuItem value="desc">Price (desc)</MenuItem>
-								<MenuItem value="new">Newest first</MenuItem>
 							</Select>
 						</FormControl>
 					</Box>
@@ -79,34 +78,27 @@ const ProductList = () => {
 							<Select
 								labelId="filterLabel"
 								id="filter"
-								value={filter}
+								value={filters}
 								MenuProps={MenuProps}
 								label="filter by"
-								onChange={handleFilterChange}>
+								onChange={(setFilters, handleFilterChange)}>
 								<ListSubheader>Colour</ListSubheader>
-								<ListSubheader>Size</ListSubheader>
-								<MenuItem value="1">1</MenuItem>
-								<MenuItem value="3">3</MenuItem>
-								<MenuItem value="5">5</MenuItem>
-								<MenuItem value="7">7</MenuItem>
-								<MenuItem value="9">9</MenuItem>
-								<MenuItem value="11">11</MenuItem>
-								<MenuItem value="Black">Black</MenuItem>
-								<MenuItem value="White">White</MenuItem>
-								<MenuItem value="Blue">Blue</MenuItem>
-								<MenuItem value="Cream">Cream</MenuItem>
-								<MenuItem value="Pink">Pink</MenuItem>
+								<MenuItem value="black">black</MenuItem>
+								<MenuItem value="white">white</MenuItem>
+								<MenuItem value="blue">blue</MenuItem>
+								<MenuItem value="cream">cream</MenuItem>
+								<MenuItem value="pink">pink</MenuItem>
 								<ListSubheader>Style</ListSubheader>
-								<MenuItem value="Heels">Heels</MenuItem>
-								<MenuItem value="Sandals">Sandals</MenuItem>
-								<MenuItem value="Boots">Boots</MenuItem>
-								<MenuItem value="Trainers">Trainers</MenuItem>
+								<MenuItem value="heels">heels</MenuItem>
+								<MenuItem value="sandals">sandals</MenuItem>
+								<MenuItem value="boots">boots</MenuItem>
+								<MenuItem value="trainers">trainers</MenuItem>
 							</Select>
 						</FormControl>
 					</Box>
 				</Container>
 			</Container>
-			<Products filter={filter} sort={sort} />
+			<Products filters={filters} sort={sort} />
 		</>
 	);
 };

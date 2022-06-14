@@ -11,7 +11,7 @@ import { MOBILE } from '../../media';
 import { useMediaQuery } from 'react-responsive';
 import { useEffect, useState } from 'react';
 
-const Product = ({ filter, sort }) => {
+const Product = ({ filters, sort }) => {
 	const isMobile = useMediaQuery(MOBILE);
 
 	const [products, setProducts] = useState([]);
@@ -20,11 +20,18 @@ const Product = ({ filter, sort }) => {
 		const { data } = await axios.get('/api/product');
 		setProducts(data.data);
 	};
-	console.log(products);
 
 	useEffect(() => {
 		fetchProducts();
 	}, []);
+
+	useEffect(() => {
+		if (sort === 'asc') {
+			setProducts((prev) => [...prev].sort((a, b) => a.price - b.price));
+		} else if (sort === 'desc') {
+			setProducts((prev) => [...prev].sort((a, b) => b.price - a.price));
+		}
+	}, [sort]);
 
 	return (
 		<Container
