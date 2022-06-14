@@ -7,7 +7,6 @@ import Typography from '@mui/material/Typography';
 import SquareIcon from '@mui/icons-material/Square';
 import axios from 'axios';
 
-// import { products } from '../../data';
 import { MOBILE } from '../../media';
 import { useMediaQuery } from 'react-responsive';
 import { useEffect, useState } from 'react';
@@ -16,12 +15,17 @@ const Product = ({ filter, sort }) => {
 	const isMobile = useMediaQuery(MOBILE);
 
 	const [products, setProducts] = useState([]);
-	const [filteredProducts, setFilteredProducts] = useState([]);
 
-	useEffect(async () => {
-		const res = await axios.get('http://localhost:5001/api/products');
-		console.log(res);
+	const fetchProducts = async () => {
+		const { data } = await axios.get('/api/product');
+		setProducts(data.data);
+	};
+	console.log(products);
+
+	useEffect(() => {
+		fetchProducts();
 	}, []);
+
 	return (
 		<Container
 			maxWidth={false}
