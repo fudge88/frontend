@@ -75,7 +75,7 @@ const Product = ({ sort }) => {
 						<Box
 							sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
 							<Box>
-								{product.colour.map((c, index) => (
+								{product.colour?.map((c, index) => (
 									<Button
 										key={index}
 										sx={{

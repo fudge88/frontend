@@ -9,19 +9,12 @@ import { useMediaQuery } from 'react-responsive';
 import { useLocation } from 'react-router';
 import { useEffect, useState } from 'react';
 
-const size = ['3', '4', '5', '6', '7', '8'];
-const colourList = [
-	{ color: 'purple' },
-	{ color: 'orange' },
-	{ color: 'green' },
-	{ color: 'pink' },
-	{ color: 'black' },
-];
-
 const Product = () => {
 	const location = useLocation();
 	const id = location.pathname.split('/')[2];
 	const [product, setProduct] = useState({});
+	const [colour, setColour] = useState('');
+	const [size, setSize] = useState('');
 
 	const fetchProduct = async () => {
 		const { data } = await axios.get('/api/product/' + id);
@@ -32,7 +25,11 @@ const Product = () => {
 		fetchProduct();
 	}, [id]);
 
-	console.log(product);
+	const handleClick = () => {
+		// add to basket
+		console.log('add to basket');
+	};
+	console.log(colour, size);
 
 	const isTablet = useMediaQuery(TABLET);
 	return (
@@ -71,7 +68,7 @@ const Product = () => {
 						<Typography
 							sx={{ paddingTop: '20px', textTransform: 'uppercase' }}
 							variant="subtitle1">
-							Colour: <b>pink</b>
+							Colour: <b>{product.colour}</b>
 						</Typography>
 					</Box>
 					<Typography variant="caption">More colours:</Typography>
@@ -83,6 +80,7 @@ const Product = () => {
 						}}>
 						{product.colour?.map((c) => (
 							<Button
+								onClick={() => setColour(c)}
 								key={cancelAnimationFrame}
 								sx={{
 									backgroundColor: `${c}`,
@@ -104,6 +102,7 @@ const Product = () => {
 						}}>
 						{product.size?.map((n) => (
 							<Button
+								onClick={() => setSize(n)}
 								key={n}
 								variant="outlined"
 								sx={{
@@ -121,6 +120,7 @@ const Product = () => {
 						))}
 					</Box>
 					<Button
+						onClick={handleClick}
 						sx={{
 							marginTop: '20px',
 							color: 'white',

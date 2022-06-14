@@ -6,11 +6,15 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import { useNavigate } from 'react-router-dom';
 
 const categories = ['men', 'women', 'kids', 'view basket'];
 
 const NavDropdown = () => {
 	const [openDropdown, setOpenDropdown] = useState(false);
+
+	const navigate = useNavigate();
+
 	return (
 		<>
 			<Drawer

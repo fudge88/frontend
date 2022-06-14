@@ -7,6 +7,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Badge from '@mui/material/Badge';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
 
 import NavDropdown from '../NavDropdown';
 import { MOBILE } from '../../media';
@@ -24,6 +25,9 @@ const theme = createTheme({
 
 const Nav = () => {
 	const isMobile = useMediaQuery(MOBILE);
+
+	const navigate = useNavigate();
+
 	return (
 		<AppBar
 			position="static"
@@ -32,11 +36,16 @@ const Nav = () => {
 				{isMobile ? (
 					<>
 						<NavDropdown />
-						<Typography variant="button">Golden Shoe</Typography>
+						<Typography onClick={() => navigate('/')} variant="button">
+							Golden Shoe
+						</Typography>
 					</>
 				) : (
 					<>
-						<Typography sx={{ textTransform: 'uppercase' }} variant="h6">
+						<Typography
+							onClick={() => navigate('/')}
+							sx={{ textTransform: 'uppercase' }}
+							variant="h6">
 							Golden Shoe
 						</Typography>
 						<Tabs value={false} textColor="inherit" sx={{ marginLeft: 'auto' }}>
@@ -53,7 +62,10 @@ const Nav = () => {
 						'&:hover': { color: '#5fcbcf' },
 					}}>
 					<ThemeProvider theme={theme}>
-						<Badge badgeContent={4} color="brand">
+						<Badge
+							onClick={() => navigate('/basket')}
+							badgeContent={4}
+							color="brand">
 							<ShoppingBasketOutlinedIcon />
 						</Badge>
 					</ThemeProvider>

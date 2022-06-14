@@ -6,12 +6,15 @@ import Button from '@mui/material/Button';
 
 import { TABLET, MOBILE } from '../../media';
 import { useMediaQuery } from 'react-responsive';
+import { useNavigate } from 'react-router-dom';
 
 import './Header.css';
 
 const Header = () => {
 	const isTablet = useMediaQuery(TABLET);
 	const isMobile = useMediaQuery(MOBILE);
+
+	const navigate = useNavigate();
 	return (
 		<Container>
 			<Stack
@@ -50,6 +53,7 @@ const Header = () => {
 						Let your shoes do the talking
 					</Typography>
 					<Button
+						onClick={() => navigate('/products')}
 						sx={{
 							mt: 2,
 							color: 'white',
