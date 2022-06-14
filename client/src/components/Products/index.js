@@ -4,22 +4,26 @@ import Box from '@mui/material/Box';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import SquareIcon from '@mui/icons-material/Square';
+import Button from '@mui/icons-material/Square';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 import { MOBILE } from '../../media';
 import { useMediaQuery } from 'react-responsive';
 import { useEffect, useState } from 'react';
 
-const Product = ({ filters, sort }) => {
+const Product = ({ sort }) => {
 	const isMobile = useMediaQuery(MOBILE);
 
 	const [products, setProducts] = useState([]);
+
+	const navigate = useNavigate();
 
 	const fetchProducts = async () => {
 		const { data } = await axios.get('/api/product');
 		setProducts(data.data);
 	};
+	console.log(products);
 
 	useEffect(() => {
 		fetchProducts();
@@ -45,6 +49,7 @@ const Product = ({ filters, sort }) => {
 			{products.map((product) => (
 				<Card
 					key={product.id}
+					onClick={() => navigate(`/product/${product._id}`)}
 					sx={{
 						minWidth: { sm: 150, md: 200 },
 						minHeight: { sm: 150, md: 200 },
@@ -66,13 +71,28 @@ const Product = ({ filters, sort }) => {
 							{product.title}
 						</Typography>
 						<Typography variant="body2" component="div">
-							£{product.price}
+							£{product.price}.00
 						</Typography>
 						<Box
 							sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
 							<Box>
-								<SquareIcon sx={{ color: 'pink' }} />
-								<SquareIcon sx={{ color: 'black' }} />
+								{product.colour.map((c, index) => (
+									<Button
+										key={index}
+										sx={{
+											color: `${c}`,
+											backgroundColor: `${c}`,
+											padding: '0px',
+											minWidth: '25px',
+											height: '20px',
+											borderRadius: '0px',
+											margin: '5px',
+											border: '1px solid black',
+											'&:hover': {
+												border: 'solid 3px #5fcbcf',
+											},
+										}}></Button>
+								))}
 							</Box>
 						</Box>
 					</CardContent>

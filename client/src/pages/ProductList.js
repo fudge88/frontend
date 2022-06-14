@@ -9,6 +9,8 @@ import Typography from '@mui/material/Typography';
 import { useState } from 'react';
 
 import Products from '../components/Products';
+import { MOBILE } from '../media';
+import { useMediaQuery } from 'react-responsive';
 import '../App.css';
 
 const ITEM_HEIGHT = 50;
@@ -26,6 +28,8 @@ const MenuProps = {
 };
 
 const ProductList = () => {
+	const isMobile = useMediaQuery(MOBILE);
+
 	const [sort, setSort] = useState('');
 	const [filters, setFilters] = useState({});
 
@@ -56,7 +60,7 @@ const ProductList = () => {
 					sx={{
 						display: 'flex',
 						flexWrap: 'wrap',
-						justifyContent: 'space-between',
+						justifyContent: isMobile ? 'center' : 'space-between',
 					}}>
 					<Box>
 						<FormControl sx={{ m: 1, minWidth: 120 }} size="small">

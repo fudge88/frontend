@@ -2,9 +2,12 @@ import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import axios from 'axios';
 
 import { TABLET } from '../../media';
 import { useMediaQuery } from 'react-responsive';
+import { useLocation } from 'react-router';
+import { useEffect, useState } from 'react';
 
 const size = ['3', '4', '5', '6', '7', '8'];
 const colourList = [
@@ -16,6 +19,21 @@ const colourList = [
 ];
 
 const Product = () => {
+	const location = useLocation();
+	const id = location.pathname.split('/')[2];
+	const [product, setProduct] = useState({});
+
+	const fetchProduct = async () => {
+		const { data } = await axios.get('/api/product/' + id);
+		setProduct(data.data);
+	};
+
+	useEffect(() => {
+		fetchProduct();
+	}, [id]);
+
+	console.log(product);
+
 	const isTablet = useMediaQuery(TABLET);
 	return (
 		<Container
@@ -35,7 +53,7 @@ const Product = () => {
 						maxHeight: { xs: 330, md: 667 },
 						maxWidth: { xs: 350, md: 650 },
 					}}
-					src="https://cdn.media.amplience.net/i/office/4522632954_sd1.jpg?$newhighres$&w=400&h=355&fmt=auto&qlt=default&fmt.jpeg.interlaced=true"
+					src={product.img}
 				/>
 
 				<Box
@@ -47,9 +65,9 @@ const Product = () => {
 					}}>
 					<Box sx={{ marginBottom: '20px' }}>
 						<Typography sx={{ textTransform: 'capitalize' }} variant="h5">
-							skinny strap heel
+							{product.title}
 						</Typography>
-						<Typography variant="h6">£34.99</Typography>
+						<Typography variant="h6">{product.price}</Typography>
 						<Typography
 							sx={{ paddingTop: '20px', textTransform: 'uppercase' }}
 							variant="subtitle1">
@@ -116,7 +134,7 @@ const Product = () => {
 				</Box>
 			</Box>
 			<Box sx={{ padding: '20px' }}>
-				<Typography variant="h5">Product Details</Typography>
+				<Typography variant="h5">{product.detail}</Typography>
 				<Typography variant="body2">
 					Channel a retro athletic aesthetic in sports-casual sneaker Court Lite
 					Tor. Innovative, super-lightweight cushioning complements a

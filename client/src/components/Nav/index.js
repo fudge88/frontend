@@ -39,9 +39,9 @@ const Nav = () => {
 						<Typography sx={{ textTransform: 'uppercase' }} variant="h6">
 							Golden Shoe
 						</Typography>
-						<Tabs textColor="white" sx={{ marginLeft: 'auto' }}>
+						<Tabs value={false} textColor="inherit" sx={{ marginLeft: 'auto' }}>
 							{categories.map((category, index) => (
-								<Tab value={index} key={index} label={category} />
+								<Tab key={index} label={category} />
 							))}
 						</Tabs>
 					</>
