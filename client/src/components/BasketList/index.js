@@ -5,10 +5,21 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 
 import { TABLET, XSMOBILE } from '../../media';
 import { useMediaQuery } from 'react-responsive';
+import { useState } from 'react';
 
 const BasketList = () => {
 	const isTablet = useMediaQuery(TABLET);
 	const isXsMobile = useMediaQuery(XSMOBILE);
+
+	const [quantity, setQuantity] = useState(1);
+
+	const handleQuantity = (type) => {
+		if (type === 'dec') {
+			quantity > 1 && setQuantity(quantity - 1);
+		} else {
+			setQuantity(quantity + 1);
+		}
+	};
 	return (
 		<>
 			<Box sx={{ padding: isXsMobile ? '20px 10px' : '20px' }}>
@@ -31,7 +42,6 @@ const BasketList = () => {
 						flexGrow: '1',
 					}}>
 					<Box
-						// m={isTablet ? 0 : 2}
 						sx={{
 							display: 'flex',
 							flexDirection: 'row',
@@ -46,7 +56,6 @@ const BasketList = () => {
 							component="img"
 							sx={{
 								maxWidth: 150,
-								// marginRight: 'auto',
 							}}
 							src="https://img.freepik.com/free-photo/fashionable-woman-s-high-heel-shoe-isolated-white-background-beautiful-yellow-female-high-heels-shoe-luxury-rear-view_186202-4496.jpg?w=826&t=st=1654680377~exp=1654680977~hmac=bc9ce7d08b8078e484a4f65fd070c93de50ead17bc9fb471d5ae3a0a25804d21"
 						/>
@@ -71,6 +80,7 @@ const BasketList = () => {
 								}}>
 								<Button
 									variant="outlined"
+									onClick={() => handleQuantity('dec')}
 									sx={{
 										minWidth: '40px',
 										maxHeight: '40px',
@@ -89,9 +99,10 @@ const BasketList = () => {
 										margin: 'auto',
 										paddingLeft: '10px',
 									}}
-									placeholder="4"
+									value={quantity}
 								/>
 								<Button
+									onClick={() => handleQuantity('inc')}
 									variant="contained"
 									sx={{
 										minWidth: '40px',

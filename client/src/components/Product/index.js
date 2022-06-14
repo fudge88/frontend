@@ -67,7 +67,7 @@ const Product = () => {
 						<Typography sx={{ textTransform: 'capitalize' }} variant="h5">
 							{product.title}
 						</Typography>
-						<Typography variant="h6">{product.price}</Typography>
+						<Typography variant="h6">£{product.price}.00</Typography>
 						<Typography
 							sx={{ paddingTop: '20px', textTransform: 'uppercase' }}
 							variant="subtitle1">
@@ -81,11 +81,11 @@ const Product = () => {
 							flexDirection: 'row',
 							justifyContent: isTablet ? 'center' : 'left',
 						}}>
-						{colourList.map((c, index) => (
+						{product.colour?.map((c) => (
 							<Button
-								key={index}
+								key={cancelAnimationFrame}
 								sx={{
-									backgroundColor: `${c.color}`,
+									backgroundColor: `${c}`,
 									padding: '0px',
 									minWidth: '35px',
 									height: '30px',
@@ -102,9 +102,9 @@ const Product = () => {
 							flexDirection: 'row',
 							justifyContent: isTablet ? 'center' : 'left',
 						}}>
-						{size.map((n, index) => (
+						{product.size?.map((n) => (
 							<Button
-								key={index}
+								key={n}
 								variant="outlined"
 								sx={{
 									color: 'black',

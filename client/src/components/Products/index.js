@@ -23,7 +23,6 @@ const Product = ({ sort }) => {
 		const { data } = await axios.get('/api/product');
 		setProducts(data.data);
 	};
-	console.log(products);
 
 	useEffect(() => {
 		fetchProducts();
