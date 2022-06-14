@@ -3,14 +3,18 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
+import { useProductContext } from '../../context/ProductProvider';
 
 import { XSMOBILE } from '../../media';
 import { useMediaQuery } from 'react-responsive';
 import { categories } from '../../data';
+import { useNavigate } from 'react-router-dom';
 
 import './Category.css';
 
 const Category = () => {
+	const { products, filteredProduct } = useProductContext();
+	const navigate = useNavigate();
 	const isXsMobile = useMediaQuery(XSMOBILE);
 	return (
 		<Box
@@ -56,6 +60,10 @@ const Category = () => {
 								{category.title}
 							</Typography>
 							<Button
+								onClick={() => {
+									filteredProduct(category.title);
+									navigate('/products/');
+								}}
 								sx={{
 									color: 'white',
 									backgroundColor: 'black',

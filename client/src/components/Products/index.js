@@ -5,28 +5,16 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/icons-material/Square';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 import { MOBILE } from '../../media';
 import { useMediaQuery } from 'react-responsive';
 import { useEffect, useState } from 'react';
 
-const Product = ({ sort }) => {
+const Product = ({ sort, products, setProducts }) => {
 	const isMobile = useMediaQuery(MOBILE);
 
-	const [products, setProducts] = useState([]);
-
 	const navigate = useNavigate();
-
-	const fetchProducts = async () => {
-		const { data } = await axios.get('/api/product');
-		setProducts(data.data);
-	};
-
-	useEffect(() => {
-		fetchProducts();
-	}, []);
 
 	useEffect(() => {
 		if (sort === 'asc') {

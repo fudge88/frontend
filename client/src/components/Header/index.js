@@ -3,6 +3,7 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
+import { useProductContext } from '../../context/ProductProvider';
 
 import { TABLET, MOBILE } from '../../media';
 import { useMediaQuery } from 'react-responsive';
@@ -11,6 +12,7 @@ import { useNavigate } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
+	const { filteredProduct } = useProductContext();
 	const isTablet = useMediaQuery(TABLET);
 	const isMobile = useMediaQuery(MOBILE);
 
@@ -53,7 +55,10 @@ const Header = () => {
 						Let your shoes do the talking
 					</Typography>
 					<Button
-						onClick={() => navigate('/products')}
+						onClick={() => {
+							filteredProduct();
+							navigate('/products');
+						}}
 						sx={{
 							mt: 2,
 							color: 'white',

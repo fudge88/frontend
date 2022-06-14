@@ -7,19 +7,22 @@ import Home from './pages/Home';
 import ProductList from './pages/ProductList';
 import Basket from './pages/Basket';
 import { Routes, Route } from 'react-router-dom';
+import { ProductProvider } from './context/ProductProvider';
 
 export const App = () => {
 	return (
 		<div>
-			<Nav />
-			<OfferBanner />
-			<Routes>
-				<Route path="/" element={<Home />} />
-				<Route path="/products/" element={<ProductList />} />
-				<Route path="/product/:id" element={<ProductItem />} />
-				<Route path="/basket" element={<Basket />} />
-			</Routes>
-			<Footer />
+			<ProductProvider>
+				<Nav />
+				<OfferBanner />
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/products/" element={<ProductList />} />
+					<Route path="/product/:id" element={<ProductItem />} />
+					<Route path="/basket" element={<Basket />} />
+				</Routes>
+				<Footer />
+			</ProductProvider>
 		</div>
 	);
 };

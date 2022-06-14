@@ -7,6 +7,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Typography from '@mui/material/Typography';
 import { useState } from 'react';
+import { useProductContext } from '../context/ProductProvider';
 
 import Products from '../components/Products';
 import { MOBILE } from '../media';
@@ -28,6 +29,8 @@ const MenuProps = {
 };
 
 const ProductList = () => {
+	const { products, setProducts, category } = useProductContext();
+	console.log(products);
 	const isMobile = useMediaQuery(MOBILE);
 
 	const [sort, setSort] = useState('');
@@ -41,13 +44,40 @@ const ProductList = () => {
 		setFilters(event.target.value);
 	};
 
+	const PageTitle = () => {
+		if (category == 'men') {
+			return (
+				<Typography sx={{ marginBottom: '20px' }} variant="h4">
+					Men
+				</Typography>
+			);
+		}
+		if (category == 'women') {
+			return (
+				<Typography sx={{ marginBottom: '20px' }} variant="h4">
+					Women
+				</Typography>
+			);
+		}
+		if (category == 'kids') {
+			return (
+				<Typography sx={{ marginBottom: '20px' }} variant="h4">
+					Kids
+				</Typography>
+			);
+		} else {
+			return (
+				<Typography sx={{ marginBottom: '20px' }} variant="h4">
+					Comfort for your feet
+				</Typography>
+			);
+		}
+	};
 	return (
 		<>
 			<Container sx={{ padding: '20px' }}>
 				<Box sx={{ textAlign: 'center', padding: '30px' }}>
-					<Typography sx={{ marginBottom: '20px' }} variant="h4">
-						Heels
-					</Typography>
+					<PageTitle />
 					<Typography variant="body2">
 						From high heels to black heels, we’ve got a pair for every occasion.
 						Complete your going out look with a pair of stiletto heels from our
@@ -102,7 +132,7 @@ const ProductList = () => {
 					</Box>
 				</Container>
 			</Container>
-			<Products filters={filters} sort={sort} />
+			<Products products={products} setProducts={setProducts} sort={sort} />
 		</>
 	);
 };
