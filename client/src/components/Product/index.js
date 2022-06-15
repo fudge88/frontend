@@ -28,7 +28,7 @@ const Product = () => {
 
 	useEffect(() => {
 		fetchProduct();
-	}, []);
+	}, [id]);
 
 	const available = () => {
 		if (product.inStock) return false;
@@ -140,7 +140,11 @@ const Product = () => {
 						add to basket
 					</Button>
 					{!product.inStock && (
-						<Typography variant="outline">Out of Stock </Typography>
+						<Typography
+							variant="overline"
+							sx={{ textAlign: 'center', padding: '5px' }}>
+							Out of Stock{' '}
+						</Typography>
 					)}
 				</Box>
 			</Box>

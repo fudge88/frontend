@@ -2,14 +2,16 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import OutlinedInput from '@mui/material/OutlinedInput';
+import { useProductContext } from '../../context/ProductProvider';
 
 import { TABLET } from '../../media';
 import { useMediaQuery } from 'react-responsive';
 import { useState } from 'react';
 
-const BasketCard = ({ img, colour, size, price, title }) => {
+const BasketCard = ({ img, colour, size, price, title, _id }) => {
 	const isTablet = useMediaQuery(TABLET);
 
+	const { removeItem } = useProductContext();
 	const [quantity, setQuantity] = useState(1);
 
 	const handleQuantity = (type) => {
@@ -95,7 +97,9 @@ const BasketCard = ({ img, colour, size, price, title }) => {
 						+
 					</Button>
 				</Box>
-				<Typography variant="caption">remove item</Typography>
+				<Button onClick={() => removeItem(_id)} variant="caption">
+					remove item
+				</Button>
 			</Box>
 		</Box>
 	);

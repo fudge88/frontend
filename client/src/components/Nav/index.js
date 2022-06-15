@@ -29,7 +29,6 @@ const Nav = () => {
 	const { products, filteredProduct, basketProduct } = useProductContext();
 	const navigate = useNavigate();
 
-	console.log(basketProduct);
 	return (
 		<AppBar
 			position="static"

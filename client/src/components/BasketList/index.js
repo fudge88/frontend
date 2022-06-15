@@ -18,15 +18,23 @@ const BasketList = () => {
 	// const [quantity, setQuantity] = useState(1);
 
 	const estimateShipping = 5.9;
-	const subtotal = basketProduct.reduce((total, item) => {
+	const subtotal = basketProduct?.reduce((total, item) => {
 		return (total += item.price);
 	}, 0);
 
 	const total = estimateShipping + subtotal;
 
 	const BasketEmpty = () => {
-		return <Typography>Basket is currently empty!</Typography>;
+		return (
+			<Box sx={{ textAlign: 'center', padding: '20px' }}>
+				<Typography variant="h4">Your basket is currently empty!</Typography>
+				<Typography variant="h6">
+					Add products to continue to checkout...
+				</Typography>
+			</Box>
+		);
 	};
+	console.log(basketProduct);
 	return (
 		<>
 			<Box sx={{ padding: isXsMobile ? '20px 10px' : '20px' }}>

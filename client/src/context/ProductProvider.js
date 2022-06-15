@@ -10,9 +10,14 @@ export const ProductProvider = ({ children }) => {
 	const [category, setCategory] = useState('all');
 	const [basketProduct, setBasketProduct] = useState([]);
 
+	const removeItem = (id) => {
+		setBasketProduct((prevState) =>
+			prevState.filter((item) => item._id !== id)
+		);
+	};
+
 	const basketItems = (id, size, colour) => {
 		const chosenItem = allProducts.find((item) => item._id === id);
-		// setBasketProduct([...basketProduct, { ...chosenItem, size, colour }]);
 		setBasketProduct((prevState) => [
 			{ ...chosenItem, size, colour },
 			...prevState,
@@ -43,13 +48,13 @@ export const ProductProvider = ({ children }) => {
 	};
 
 	const productValues = {
-		key: 'value',
 		products,
 		filteredProduct: typeFilter,
 		setProducts,
 		category,
 		basketItems,
 		basketProduct,
+		removeItem,
 	};
 	return (
 		<ProductContext.Provider value={productValues}>
