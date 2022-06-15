@@ -17,6 +17,7 @@ const Product = () => {
 	const [product, setProduct] = useState({});
 	const [colour, setColour] = useState('');
 	const [size, setSize] = useState('');
+	const [error, setError] = useState(false);
 
 	const { basketItems } = useProductContext();
 	const navigate = useNavigate();
@@ -34,7 +35,12 @@ const Product = () => {
 		if (product.inStock) return false;
 		else return true;
 	};
-
+	const addToBasketHandler = () => {
+		if (colour && size) {
+			basketItems(id, size, colour);
+			navigate('/products');
+		} else setError(true);
+	};
 	const isTablet = useMediaQuery(TABLET);
 	return (
 		<Container
@@ -126,8 +132,7 @@ const Product = () => {
 					<Button
 						disabled={available()}
 						onClick={() => {
-							basketItems(id, size, colour);
-							navigate('/products');
+							addToBasketHandler();
 						}}
 						sx={{
 							marginTop: '20px',
@@ -139,11 +144,19 @@ const Product = () => {
 						variant="contained">
 						add to basket
 					</Button>
+					{error && (
+						<Typography
+							variant="overline"
+							sx={{ textAlign: 'center', padding: '5px' }}>
+							Please select colour and size
+						</Typography>
+					)}
+
 					{!product.inStock && (
 						<Typography
 							variant="overline"
 							sx={{ textAlign: 'center', padding: '5px' }}>
-							Out of Stock{' '}
+							Out of Stock
 						</Typography>
 					)}
 				</Box>

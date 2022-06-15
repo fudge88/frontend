@@ -34,7 +34,6 @@ const BasketList = () => {
 			</Box>
 		);
 	};
-	console.log(basketProduct);
 	return (
 		<>
 			<Box sx={{ padding: isXsMobile ? '20px 10px' : '20px' }}>

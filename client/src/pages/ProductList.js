@@ -2,7 +2,6 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
-import ListSubheader from '@mui/material/ListSubheader';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Typography from '@mui/material/Typography';
@@ -98,29 +97,6 @@ const ProductList = () => {
 								onChange={(setSort, handleSortChange)}>
 								<MenuItem value="asc">Price (asc)</MenuItem>
 								<MenuItem value="desc">Price (desc)</MenuItem>
-							</Select>
-						</FormControl>
-					</Box>
-					<Box>
-						<FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-							<InputLabel id="filter">Filter by</InputLabel>
-							<Select
-								labelId="filterLabel"
-								id="filter"
-								value="black"
-								MenuProps={MenuProps}
-								label="filter by">
-								<ListSubheader>Colour</ListSubheader>
-								<MenuItem value="black">black</MenuItem>
-								<MenuItem value="white">white</MenuItem>
-								<MenuItem value="blue">blue</MenuItem>
-								<MenuItem value="cream">cream</MenuItem>
-								<MenuItem value="pink">pink</MenuItem>
-								<ListSubheader>Style</ListSubheader>
-								<MenuItem value="heels">heels</MenuItem>
-								<MenuItem value="sandals">sandals</MenuItem>
-								<MenuItem value="boots">boots</MenuItem>
-								<MenuItem value="trainers">trainers</MenuItem>
 							</Select>
 						</FormControl>
 					</Box>
