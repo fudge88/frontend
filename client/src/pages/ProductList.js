@@ -112,7 +112,7 @@ const ProductList = () => {
 							<Select
 								labelId="filterLabel"
 								id="filter"
-								value={filters}
+								value="black"
 								MenuProps={MenuProps}
 								label="filter by"
 								onChange={(setFilters, handleFilterChange)}>

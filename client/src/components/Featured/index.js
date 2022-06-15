@@ -4,8 +4,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Container from '@mui/material/Container';
 import { useNavigate } from 'react-router-dom';
+import { useProductContext } from '../../context/ProductProvider';
 
-import { products } from '../../data';
 import { DESKTOP, MOBILE, XSMOBILE, TABLET } from '../../media';
 import { useMediaQuery } from 'react-responsive';
 
@@ -13,16 +13,16 @@ const Featured = () => {
 	const isXsMobile = useMediaQuery(XSMOBILE);
 	const isMobile = useMediaQuery(MOBILE);
 	const isTablet = useMediaQuery(TABLET);
-	const isDesktop = useMediaQuery(DESKTOP);
+
+	const { products, setProducts, category } = useProductContext();
 
 	const navigate = useNavigate();
 
 	// screen size for slice figure
 	const getScreenSize = () => {
-		if (isXsMobile) return 6;
-		if (isMobile) return 4;
-		if (isTablet) return 3;
-		if (isDesktop) return 2;
+		if (isMobile) return 2;
+		if (isTablet) return 4;
+		else return 6;
 	};
 
 	// shuffle products to display
@@ -54,8 +54,9 @@ const Featured = () => {
 					flexDirection: 'row',
 					justifyContent: 'center',
 				}}>
-				{randomized.slice(getScreenSize()).map((product) => (
+				{randomized.slice(0, getScreenSize()).map((product) => (
 					<Card
+						onClick={() => navigate(`/product/${product._id}`)}
 						key={product.id}
 						sx={{
 							minWidth: { sm: 120, md: 140 },
