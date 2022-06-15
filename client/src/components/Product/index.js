@@ -4,6 +4,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import axios from 'axios';
 import { useProductContext } from '../../context/ProductProvider';
+import { useNavigate } from 'react-router-dom';
 
 import { TABLET } from '../../media';
 import { useMediaQuery } from 'react-responsive';
@@ -18,6 +19,7 @@ const Product = () => {
 	const [size, setSize] = useState('');
 
 	const { basketItems, basketProduct } = useProductContext();
+	const navigate = useNavigate();
 
 	const fetchProduct = async () => {
 		const { data } = await axios.get('/api/product/' + id);
@@ -122,7 +124,10 @@ const Product = () => {
 						))}
 					</Box>
 					<Button
-						onClick={() => basketItems(id, size, colour)}
+						onClick={() => {
+							basketItems(id, size, colour);
+							navigate('/products');
+						}}
 						sx={{
 							marginTop: '20px',
 							color: 'white',

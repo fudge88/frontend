@@ -25,6 +25,15 @@ const BasketList = () => {
 			setQuantity(quantity + 1);
 		}
 	};
+
+	const estimateShipping = 5.9;
+	const subtotal = basketProduct.reduce((total, item) => {
+		return (total += item.price);
+	}, 0);
+
+	const total = estimateShipping + subtotal;
+
+	console.log(subtotal);
 	return (
 		<>
 			<Box sx={{ padding: isXsMobile ? '20px 10px' : '20px' }}>
@@ -64,13 +73,13 @@ const BasketList = () => {
 						Order Summary
 					</Typography>
 					<Typography mb={2} variant="subtitle1">
-						Subtotal
+						Subtotal £{subtotal.toFixed(2)}
 					</Typography>
 					<Typography mb={2} variant="subtitle1">
-						Esimated Shipping
+						Esimated Shipping {estimateShipping.toFixed(2)}
 					</Typography>
 					<Typography mb={2} variant="subtitle1">
-						<b>Total</b>
+						<b>Total: £{total.toFixed(2)}</b>
 					</Typography>
 					{/* buttons */}
 					<Box
