@@ -57,7 +57,7 @@ const Featured = () => {
 				{randomized.slice(0, getScreenSize()).map((product) => (
 					<Card
 						onClick={() => navigate(`/product/${product._id}`)}
-						key={product.id}
+						key={product._id}
 						sx={{
 							minWidth: { sm: 120, md: 140 },
 							minHeight: { sm: 120, md: 140 },

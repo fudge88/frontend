@@ -8,6 +8,7 @@ import Tab from '@mui/material/Tab';
 import Badge from '@mui/material/Badge';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
+import { useProductContext } from '../../context/ProductProvider';
 
 import NavDropdown from '../NavDropdown';
 import { MOBILE } from '../../media';
@@ -26,6 +27,7 @@ const theme = createTheme({
 const Nav = () => {
 	const isMobile = useMediaQuery(MOBILE);
 
+	const { products, filteredProduct } = useProductContext();
 	const navigate = useNavigate();
 
 	return (
@@ -50,7 +52,14 @@ const Nav = () => {
 						</Typography>
 						<Tabs value={false} textColor="inherit" sx={{ marginLeft: 'auto' }}>
 							{categories.map((category, index) => (
-								<Tab key={index} label={category} />
+								<Tab
+									onClick={() => {
+										filteredProduct(category);
+										navigate('/products/');
+									}}
+									key={index}
+									label={category}
+								/>
 							))}
 						</Tabs>
 					</>
