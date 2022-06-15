@@ -2,14 +2,19 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import OutlinedInput from '@mui/material/OutlinedInput';
+import { useProductContext } from '../../context/ProductProvider';
 
 import { TABLET, XSMOBILE } from '../../media';
 import { useMediaQuery } from 'react-responsive';
+
 import { useState } from 'react';
+import BasketCard from '../BasketCard';
 
 const BasketList = () => {
 	const isTablet = useMediaQuery(TABLET);
 	const isXsMobile = useMediaQuery(XSMOBILE);
+
+	const { basketProduct } = useProductContext();
 
 	const [quantity, setQuantity] = useState(1);
 
@@ -33,7 +38,6 @@ const BasketList = () => {
 					flexDirection: 'row',
 					flexWrap: 'wrap-reverse',
 				}}>
-				{/* basket list */}
 				<Box
 					sx={{
 						display: 'flex',
@@ -41,85 +45,10 @@ const BasketList = () => {
 						flexWrap: 'nowrap',
 						flexGrow: '1',
 					}}>
-					<Box
-						sx={{
-							display: 'flex',
-							flexDirection: 'row',
-							alignItems: 'center',
-							justifyContent: 'space-between',
-							borderTop: 'solid 1px black',
-							padding: '20px 0px',
-							flexGrow: '1',
-							margin: isTablet ? '20px 10px' : '20px',
-						}}>
-						<Box
-							component="img"
-							sx={{
-								maxWidth: 150,
-							}}
-							src="https://img.freepik.com/free-photo/fashionable-woman-s-high-heel-shoe-isolated-white-background-beautiful-yellow-female-high-heels-shoe-luxury-rear-view_186202-4496.jpg?w=826&t=st=1654680377~exp=1654680977~hmac=bc9ce7d08b8078e484a4f65fd070c93de50ead17bc9fb471d5ae3a0a25804d21"
-						/>
-						<Box
-							sx={{
-								display: 'flex',
-								flexDirection: 'column',
-								textAlign: 'right',
-								textTransform: 'capitalize',
-							}}>
-							<Typography variant="button">skinny strap heels</Typography>
-							<Typography variant="body2">colour</Typography>
-							<Typography variant="body2">size</Typography>
-							<Typography variant="body2">price</Typography>
-							<Box
-								sx={{
-									display: 'flex',
-									flexDirection: 'row',
-									justifyContent: 'normal',
-									height: '40px',
-									margin: '10px 0px',
-								}}>
-								<Button
-									variant="outlined"
-									onClick={() => handleQuantity('dec')}
-									sx={{
-										minWidth: '40px',
-										maxHeight: '40px',
-										backgroundColor: 'black',
-										color: 'white',
-										fontSize: '20px',
-										boxShadow: 'none',
-										'&:hover': { backgroundColor: '#5fcbcf', color: 'black' },
-									}}>
-									-
-								</Button>
-								<OutlinedInput
-									sx={{
-										maxWidth: '60px',
-										maxHeight: '40px',
-										margin: 'auto',
-										paddingLeft: '10px',
-									}}
-									value={quantity}
-								/>
-								<Button
-									onClick={() => handleQuantity('inc')}
-									variant="contained"
-									sx={{
-										minWidth: '40px',
-										backgroundColor: 'black',
-										color: 'white',
-										fontSize: '15px',
-										boxShadow: 'none',
-										'&:hover': { backgroundColor: '#5fcbcf', color: 'black' },
-									}}>
-									+
-								</Button>
-							</Box>
-							<Typography variant="caption">remove item</Typography>
-						</Box>
-					</Box>
+					{basketProduct.map((item) => (
+						<BasketCard {...item} key={item._id} />
+					))}
 				</Box>
-				{/* order summary */}
 				<Box
 					sx={{
 						display: 'flex',

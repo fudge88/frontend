@@ -8,6 +8,16 @@ export const ProductProvider = ({ children }) => {
 	const [allProducts, setAllProducts] = useState();
 	const [products, setProducts] = useState([]);
 	const [category, setCategory] = useState('all');
+	const [basketProduct, setBasketProduct] = useState([]);
+
+	const basketItems = (id, size, colour) => {
+		const chosenItem = allProducts.find((item) => item._id === id);
+		// setBasketProduct([...basketProduct, { ...chosenItem, size, colour }]);
+		setBasketProduct((prevState) => [
+			{ ...chosenItem, size, colour },
+			...prevState,
+		]);
+	};
 
 	const fetchProducts = async () => {
 		const { data } = await axios.get('/api/product');
@@ -38,6 +48,8 @@ export const ProductProvider = ({ children }) => {
 		filteredProduct: typeFilter,
 		setProducts,
 		category,
+		basketItems,
+		basketProduct,
 	};
 	return (
 		<ProductContext.Provider value={productValues}>

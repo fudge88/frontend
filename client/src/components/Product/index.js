@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import axios from 'axios';
+import { useProductContext } from '../../context/ProductProvider';
 
 import { TABLET } from '../../media';
 import { useMediaQuery } from 'react-responsive';
@@ -15,6 +16,8 @@ const Product = () => {
 	const [product, setProduct] = useState({});
 	const [colour, setColour] = useState('');
 	const [size, setSize] = useState('');
+
+	const { basketItems, basketProduct } = useProductContext();
 
 	const fetchProduct = async () => {
 		const { data } = await axios.get('/api/product/' + id);
@@ -119,7 +122,7 @@ const Product = () => {
 						))}
 					</Box>
 					<Button
-						onClick={handleClick}
+						onClick={() => basketItems(id, size, colour)}
 						sx={{
 							marginTop: '20px',
 							color: 'white',

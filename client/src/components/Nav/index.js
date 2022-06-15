@@ -23,13 +23,13 @@ const theme = createTheme({
 		},
 	},
 });
-
 const Nav = () => {
 	const isMobile = useMediaQuery(MOBILE);
 
-	const { products, filteredProduct } = useProductContext();
+	const { products, filteredProduct, basketProduct } = useProductContext();
 	const navigate = useNavigate();
 
+	console.log(basketProduct);
 	return (
 		<AppBar
 			position="static"
@@ -73,7 +73,7 @@ const Nav = () => {
 					<ThemeProvider theme={theme}>
 						<Badge
 							onClick={() => navigate('/basket')}
-							badgeContent={4}
+							badgeContent={basketProduct.length}
 							color="brand">
 							<ShoppingBasketOutlinedIcon />
 						</Badge>
