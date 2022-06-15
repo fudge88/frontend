@@ -1,13 +1,12 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import OutlinedInput from '@mui/material/OutlinedInput';
 import { useProductContext } from '../../context/ProductProvider';
 
 import { TABLET, XSMOBILE } from '../../media';
 import { useMediaQuery } from 'react-responsive';
 
-import { useState } from 'react';
+// import { useState } from 'react';
 import BasketCard from '../BasketCard';
 
 const BasketList = () => {
@@ -16,15 +15,7 @@ const BasketList = () => {
 
 	const { basketProduct } = useProductContext();
 
-	const [quantity, setQuantity] = useState(1);
-
-	const handleQuantity = (type) => {
-		if (type === 'dec') {
-			quantity > 1 && setQuantity(quantity - 1);
-		} else {
-			setQuantity(quantity + 1);
-		}
-	};
+	// const [quantity, setQuantity] = useState(1);
 
 	const estimateShipping = 5.9;
 	const subtotal = basketProduct.reduce((total, item) => {
@@ -33,88 +24,94 @@ const BasketList = () => {
 
 	const total = estimateShipping + subtotal;
 
-	console.log(subtotal);
+	const BasketEmpty = () => {
+		return <Typography>Basket is currently empty!</Typography>;
+	};
 	return (
 		<>
 			<Box sx={{ padding: isXsMobile ? '20px 10px' : '20px' }}>
 				<Typography variant="h4">My Bag</Typography>
-				<Typography variant="h6">Items (4)</Typography>
+				<Typography variant="h6">Items ({basketProduct.length})</Typography>
 			</Box>
-			<Box
-				sx={{
-					padding: isXsMobile ? '0px' : '20px',
-					display: 'flex',
-					flexDirection: 'row',
-					flexWrap: 'wrap-reverse',
-				}}>
+			{basketProduct.length > 0 ? (
 				<Box
 					sx={{
+						padding: isXsMobile ? '0px' : '20px',
 						display: 'flex',
-						flexDirection: 'column',
-						flexWrap: 'nowrap',
-						flexGrow: '1',
+						flexDirection: 'row',
+						flexWrap: 'wrap-reverse',
 					}}>
-					{basketProduct.map((item) => (
-						<BasketCard {...item} key={item._id} />
-					))}
-				</Box>
-				<Box
-					sx={{
-						display: 'flex',
-						flexDirection: 'column',
-						flexWrap: 'nowrap',
-						border: '1px solid #5fcbcf',
-						borderRadius: '5px',
-						padding: '10px',
-						margin: isTablet ? 'auto' : '20px 0px 0px 20px',
-						minWidth: isTablet ? '90%' : '30%',
-					}}>
-					<Typography variant="h5" pb={2}>
-						Order Summary
-					</Typography>
-					<Typography mb={2} variant="subtitle1">
-						Subtotal £{subtotal.toFixed(2)}
-					</Typography>
-					<Typography mb={2} variant="subtitle1">
-						Esimated Shipping {estimateShipping.toFixed(2)}
-					</Typography>
-					<Typography mb={2} variant="subtitle1">
-						<b>Total: £{total.toFixed(2)}</b>
-					</Typography>
-					{/* buttons */}
 					<Box
 						sx={{
 							display: 'flex',
 							flexDirection: 'column',
-							justifyContent: isXsMobile ? 'center' : 'space-between',
-							marginTop: '30px',
+							flexWrap: 'nowrap',
+							flexGrow: '1',
 						}}>
-						<Button
-							variant="contained"
+						{basketProduct.map((item) => (
+							<BasketCard {...item} key={item._id} />
+						))}
+					</Box>
+					<Box
+						sx={{
+							display: 'flex',
+							flexDirection: 'column',
+							flexWrap: 'nowrap',
+							border: '1px solid #5fcbcf',
+							borderRadius: '5px',
+							padding: '10px',
+							margin: isTablet ? 'auto' : '20px 0px 0px 20px',
+							minWidth: isTablet ? '90%' : '30%',
+						}}>
+						<Typography variant="h5" pb={2}>
+							Order Summary
+						</Typography>
+						<Typography mb={2} variant="subtitle1">
+							Subtotal £{subtotal.toFixed(2)}
+						</Typography>
+						<Typography mb={2} variant="subtitle1">
+							Esimated Shipping {estimateShipping.toFixed(2)}
+						</Typography>
+						<Typography mb={2} variant="subtitle1">
+							<b>Total: £{total.toFixed(2)}</b>
+						</Typography>
+						{/* buttons */}
+						<Box
 							sx={{
-								margin: '5px',
-								color: 'white',
-								backgroundColor: 'black',
-								cursor: 'pointer',
-								'&:hover': { backgroundColor: '#5fcbcf', color: 'black' },
+								display: 'flex',
+								flexDirection: 'column',
+								justifyContent: isXsMobile ? 'center' : 'space-between',
+								marginTop: '30px',
 							}}>
-							Checkout Now
-						</Button>
-						<Button
-							size="small"
-							variant="outlined"
-							sx={{
-								margin: '5px',
-								borderColor: 'black',
-								color: 'black',
-								cursor: 'pointer',
-								'&:hover': { backgroundColor: '#5fcbcf', color: 'black' },
-							}}>
-							Continue shopping
-						</Button>
+							<Button
+								variant="contained"
+								sx={{
+									margin: '5px',
+									color: 'white',
+									backgroundColor: 'black',
+									cursor: 'pointer',
+									'&:hover': { backgroundColor: '#5fcbcf', color: 'black' },
+								}}>
+								Checkout Now
+							</Button>
+							<Button
+								size="small"
+								variant="outlined"
+								sx={{
+									margin: '5px',
+									borderColor: 'black',
+									color: 'black',
+									cursor: 'pointer',
+									'&:hover': { backgroundColor: '#5fcbcf', color: 'black' },
+								}}>
+								Continue shopping
+							</Button>
+						</Box>
 					</Box>
 				</Box>
-			</Box>
+			) : (
+				<BasketEmpty />
+			)}
 		</>
 	);
 };

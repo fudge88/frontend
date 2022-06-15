@@ -34,32 +34,27 @@ const ProductList = () => {
 	const isMobile = useMediaQuery(MOBILE);
 
 	const [sort, setSort] = useState('');
-	const [filters, setFilters] = useState({});
 
 	const handleSortChange = (event) => {
 		setSort(event.target.value);
 	};
 
-	const handleFilterChange = (event) => {
-		setFilters(event.target.value);
-	};
-
 	const PageTitle = () => {
-		if (category == 'men') {
+		if (category === 'men') {
 			return (
 				<Typography sx={{ marginBottom: '20px' }} variant="h4">
 					Men
 				</Typography>
 			);
 		}
-		if (category == 'women') {
+		if (category === 'women') {
 			return (
 				<Typography sx={{ marginBottom: '20px' }} variant="h4">
 					Women
 				</Typography>
 			);
 		}
-		if (category == 'kids') {
+		if (category === 'kids') {
 			return (
 				<Typography sx={{ marginBottom: '20px' }} variant="h4">
 					Kids
@@ -114,8 +109,7 @@ const ProductList = () => {
 								id="filter"
 								value="black"
 								MenuProps={MenuProps}
-								label="filter by"
-								onChange={(setFilters, handleFilterChange)}>
+								label="filter by">
 								<ListSubheader>Colour</ListSubheader>
 								<MenuItem value="black">black</MenuItem>
 								<MenuItem value="white">white</MenuItem>

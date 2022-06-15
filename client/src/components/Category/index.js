@@ -14,7 +14,7 @@ import '../../App.css';
 const Category = () => {
 	const isXsMobile = useMediaQuery(XSMOBILE);
 
-	const { products, filteredProduct } = useProductContext();
+	const { filteredProduct } = useProductContext();
 
 	const navigate = useNavigate();
 	return (

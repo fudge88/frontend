@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { MOBILE } from '../../media';
 import { useMediaQuery } from 'react-responsive';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 const Product = ({ sort, products, setProducts }) => {
 	const isMobile = useMediaQuery(MOBILE);

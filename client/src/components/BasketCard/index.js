@@ -3,13 +3,12 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import OutlinedInput from '@mui/material/OutlinedInput';
 
-import { TABLET, XSMOBILE } from '../../media';
+import { TABLET } from '../../media';
 import { useMediaQuery } from 'react-responsive';
 import { useState } from 'react';
 
 const BasketCard = ({ img, colour, size, price, title }) => {
 	const isTablet = useMediaQuery(TABLET);
-	const isXsMobile = useMediaQuery(XSMOBILE);
 
 	const [quantity, setQuantity] = useState(1);
 
@@ -20,6 +19,7 @@ const BasketCard = ({ img, colour, size, price, title }) => {
 			setQuantity(quantity + 1);
 		}
 	};
+
 	return (
 		<Box
 			sx={{

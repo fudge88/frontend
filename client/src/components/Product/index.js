@@ -18,7 +18,7 @@ const Product = () => {
 	const [colour, setColour] = useState('');
 	const [size, setSize] = useState('');
 
-	const { basketItems, basketProduct } = useProductContext();
+	const { basketItems } = useProductContext();
 	const navigate = useNavigate();
 
 	const fetchProduct = async () => {
@@ -28,18 +28,12 @@ const Product = () => {
 
 	useEffect(() => {
 		fetchProduct();
-	}, [id]);
+	}, []);
 
-	const handleClick = () => {
-		// add to basket
-		console.log('add to basket');
-	};
 	const available = () => {
 		if (product.inStock) return false;
 		else return true;
 	};
-
-	console.log(product);
 
 	const isTablet = useMediaQuery(TABLET);
 	return (
@@ -128,7 +122,6 @@ const Product = () => {
 								<Typography variant="button">{n}</Typography>
 							</Button>
 						))}
-						s
 					</Box>
 					<Button
 						disabled={available()}

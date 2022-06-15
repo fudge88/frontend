@@ -6,7 +6,7 @@ import Container from '@mui/material/Container';
 import { useNavigate } from 'react-router-dom';
 import { useProductContext } from '../../context/ProductProvider';
 
-import { DESKTOP, MOBILE, XSMOBILE, TABLET } from '../../media';
+import { MOBILE, XSMOBILE, TABLET } from '../../media';
 import { useMediaQuery } from 'react-responsive';
 
 const Featured = () => {
@@ -14,7 +14,7 @@ const Featured = () => {
 	const isMobile = useMediaQuery(MOBILE);
 	const isTablet = useMediaQuery(TABLET);
 
-	const { products, setProducts, category } = useProductContext();
+	const { products } = useProductContext();
 
 	const navigate = useNavigate();
 
