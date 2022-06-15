@@ -34,6 +34,12 @@ const Product = () => {
 		// add to basket
 		console.log('add to basket');
 	};
+	const available = () => {
+		if (product.inStock) return false;
+		else return true;
+	};
+
+	console.log(product);
 
 	const isTablet = useMediaQuery(TABLET);
 	return (
@@ -122,8 +128,10 @@ const Product = () => {
 								<Typography variant="button">{n}</Typography>
 							</Button>
 						))}
+						s
 					</Box>
 					<Button
+						disabled={available()}
 						onClick={() => {
 							basketItems(id, size, colour);
 							navigate('/products');
@@ -138,6 +146,9 @@ const Product = () => {
 						variant="contained">
 						add to basket
 					</Button>
+					{!product.inStock && (
+						<Typography variant="outline">Out of Stock </Typography>
+					)}
 				</Box>
 			</Box>
 			<Box sx={{ padding: '20px' }}>
